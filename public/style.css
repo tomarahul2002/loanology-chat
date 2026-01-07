@@ -1,0 +1,19 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f9f9f9;
+}
+
+/* ✅ HEADER YOU CAN STYLE */
+.chat-header {
+  background-color: #0056d2;
+  color: #ffffff;
+  padding: 16px;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+/* Chat area */
+#chat-container {
+  height: calc(100vh - 56px);
+}
