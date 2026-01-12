@@ -1,12 +1,7 @@
+require("dotenv").config();
 const express = require("express");
 
 const app = express();
-const PORT = 3000;
-
-// ENV variable
-const DIRECT_LINE_SECRET = process.env.DIRECT_LINE_SECRET;
-
-app.use(express.static("public"));
 
 app.get("/api/token", async (req, res) => {
   try {
@@ -15,19 +10,23 @@ app.get("/api/token", async (req, res) => {
       {
         method: "POST",
         headers: {
-          Authorization: `Bearer ${DIRECT_LINE_SECRET}`
+          Authorization: `Bearer ${process.env.DIRECT_LINE_SECRET}`
         }
       }
     );
 
     const data = await response.json();
-    res.json(data);
+    res.json({ token: data.token });
+
   } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: "Token generation failed" });
+    console.error("Token generation failed:", error);
+    res.status(500).json({ error: "Failed to generate token" });
   }
 });
 
-app.listen(PORT, () => {
-  console.log(`✅ Server running at http://localhost:${PORT}`);
+// serve frontend
+app.use(express.static("public"));
+
+app.listen(3000, () => {
+  console.log("Server running on http://localhost:3000");
 });

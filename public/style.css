@@ -1,11 +1,15 @@
 body {
   margin: 0;
   font-family: Arial, sans-serif;
-  background: #f9f9f9;
+  height: 100vh;
+  overflow: hidden;
 }
 
-/* ✅ HEADER YOU CAN STYLE */
+/* HEADER */
 .chat-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
   background-color: #0056d2;
   color: #ffffff;
   padding: 16px;
@@ -13,7 +17,25 @@ body {
   font-weight: 600;
 }
 
-/* Chat area */
+/* Square logo */
+.header-logo {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+  border-radius: 0;
+}
+
+.header-title {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+/* CHAT AREA */
+#chat-wrapper {
+  height: calc(100vh - 64px);
+}
+
 #chat-container {
-  height: calc(100vh - 56px);
+  height: 100%;
+  position: relative;
 }
